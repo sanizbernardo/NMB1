@@ -1,0 +1,11 @@
+%{
+Oefening 1
+%}
+
+F = fMatrix(@f1, @u1, 5);
+disp(F);
+Fs = sineTransform(F);
+disp(Fs);
+Us = calcU(Fs)
+U = invTransform(Us);
+disp(U);
