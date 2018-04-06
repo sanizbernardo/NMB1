@@ -1,11 +1,19 @@
 %{
-Oefening 1
+Opgave 1
+%}
+%{
+P1 = poissonDST(@f1, @u1, 50);
+
+P2 = poissonDST(@f1_2, @u1_2, 50);
+
+P3 = poissonDST(@f1_2, @u1_2, 50);
 %}
 
-F = fMatrix(@f1, @u1, 5);
-disp(F);
-Fs = sineTransform(F);
-disp(Fs);
-Us = calcU(Fs)
-U = invTransform(Us);
-disp(U);
+%{
+Opgave 2
+%}
+
+for i = 3:10
+    poissonDST(@f2, @u2, 2^i);
+end
+

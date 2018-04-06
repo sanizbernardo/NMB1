@@ -1,52 +1,36 @@
 %{
-Oefening 1
+Opgave 1
+%}
+%{
+P1 = poissonDST(@f1, @u1, 50);
+
+P2 = poissonDST(@f1_2, @u1_2, 50);
+
+P3 = poissonDST(@f1_2, @u1_2, 50);
 %}
 
-disp('u(x, y) = 1');
+%{
+Opgave 2
+%}
 
-F = fMatrix(@f1, @u1, 5);
-disp('   F');
-disp(F);
-Fs = sineTransform(F);
-disp('   Fs');
-disp(Fs);
-Us = calcU(Fs, 5);
-disp('   Us');
-disp(Us);
-U = invTransform(Us);
-Ut = complete(U, @u1, 5);
-disp('   U');
-disp(Ut);
+for i = 3:10
+    poissonDST(@f2, @u2, 2^i);
+end
 
-disp('u(x, y) = 1 + x + y');
+tic
+F = poissonDST(@f2, @u2, 1024);
+toc
 
-F = fMatrix(@f1_2, @u1_2, 5);
-disp('   F');
-disp(F);
-Fs = sineTransform(F);
-disp('   Fs');
-disp(Fs);
-Us = calcU(Fs, 5);
-disp('   Us');
-disp(Us);
-U = invTransform(Us);
-Ut = complete(U, @u1_2, 5);
-disp('   U');
-disp(Ut);
+h = 1/1025;
 
-disp('u(x, y) = x^2 + y^2');
+error = zeros(1026, 1026);
+for i = 0:1025
+    for j = 0:1025
+        error(i+1, j+1) = F(i+1, j+1) - u2(h*i, h*j);
+    end
+end
 
-F = fMatrix(@f1_3, @u1_3, 5);
-disp('   F');
-disp(F);
-Fs = sineTransform(F);
-disp('   Fs');
-disp(Fs);
-Us = calcU(Fs, 5);
-disp('   Us');
-disp(Us);
-U = invTransform(Us);
-Ut = complete(U, @u1_3, 5);
-disp('   U');
-disp(Ut);
+imagesc(error);
+colormap(winter);
 
+disp('finished');
