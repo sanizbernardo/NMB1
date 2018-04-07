@@ -1,20 +1,20 @@
-function y = deboor(t_given,x,c_given,k)
+function y = deboor(t,x,c_given,k)
     y = zeros(length(x),1);
     for i = 1:length(x)
-        j = chooseStartKnot(x(i),t_given)
+        j = chooseStartKnot(x(i),t)
         % shortens both vectors to the range that will actually be used for
         % calculation. this is done to make the indices of the vector more 
         % compatible with the numbers used by the loop counter
-        c = c_given(j-k:j);
-        t = t_given(j-k:j+k);
+        c = c_given;
         for m = 1:k
-            cn = zeros(length(c)-1,1);
-            for n = 1:length(cn)
-                alpha = (x(i) - t(n+m))/(t(n+m+k)-t(n+m));
-                cn(n) = alpha*c(n+1) + (1-alpha)*c(n);
+            cn = zeros(length(c),1);
+            for n = j-k+m:j
+                t(n)
+                alpha = (x(i) - t(n))/(t(n+k+1-m)-t(n));
+                cn(n) = alpha*c(n) + (1-alpha)*c(n-1);
             end
             c = cn;
         end
-        y(i) = c(1);
+        y(i) = c(j);
     end
 end
