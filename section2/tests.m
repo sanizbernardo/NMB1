@@ -1,10 +1,9 @@
-k = 4;
-A = zeros(k+1);
-i = 0;
-for n = 1:k+1
-    for m = k+1:-1:k+2-n
-        i = i + 1;
-        A(m,n) = i;
-    end
+n = 2;
+x = linspace(0,3);
+y = zeros(length(x),1);
+t = [0 0 0 1 2 3 3 3];
+for i = 1:length(x)
+    z = bspline_vector(t ,x(i) ,n);
+    y(i) = z(1);
 end
-A
+plot(x,y)

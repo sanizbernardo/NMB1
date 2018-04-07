@@ -1,6 +1,8 @@
 % CHOOSESTARTKNOT finds the index of the rightmost knot smaller than x
 % so that t(i) < t(i+1) and t(i) <= x <= t(i+1)
 %
+% CHOOSESTARTKNOT(x,t) is the index of that t
+%
 % t := vector to search
 % 
 % x := scalar value to search for
@@ -12,7 +14,9 @@ function i = chooseStartKnot(x,t)
     else
         for i = 1:length(t)
             if(t(i) <= x)
-                if(t(i) < t(i+1) && t(i+1) > x)
+                if(i == length(t))
+                    break
+                elseif(t(i) < t(i+1) && t(i+1) > x)
                     break
                 end
             end
