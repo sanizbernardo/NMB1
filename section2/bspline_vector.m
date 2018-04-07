@@ -3,20 +3,25 @@
 %
 % also returns the index of the last knot in the knot row which is smaller
 % than the given x value
-function [y,j] = bspline_vector(t,x,k)
-    j = chooseStartKnot(x,t);
-    %if((length(t) - j)<k || j+k>length(t))
-    %    error('Not enough knots to calculate required degree of spline')
-    %end
-    y = 1;
-    for n = 1:k
-        yn = zeros(n+1,1);
-        yn(1) = ((t(j+1) - x)/(t(j+1) - t(j-k+1))) * y(1);
-        for m = 1:n-1
-            yn(m+1) = ((x - t(j-n+m))/(t(j+m-1) - t(j-n+m))) * y(m) + ...
-                ((t(j+m+1) - x)/(t(j+m+1) - t(j-n+m+1))) * y(m+1);
+function [y,j] = bspline_vector(t,x,n,k)
+    if length(x)~=1
+        y = zeros(length(x),n+k);
+        for i = 1:length(x)
+            y(i,:) = bspline_vector(t,x(i),n,k);
         end
-        yn(n+1) = ((x - t(j))/(t(j+k) - t(j))) * y(n);
-        y = yn;
+    else
+        j = chooseStartKnot(x,t,k);
+        y = zeros(k+n,1);
+        yn = y;
+        y(j) = 1;
+        for m = 1:k
+            yn(j-m) = ((t(j+1) - x)/(t(j+1) - t(j-m+1))) * y(j-m+1);
+            for i = j-m+1:j-1
+                yn(i) = ((x - t(i))/(t(i+m) - t(i))) * y(i) + ...
+                    ((t(i+m+1) - x)/(t(i+m+1) - t(i+1))) * y(i+1);
+            end
+            yn(j) = ((x - t(j))/(t(j+m) - t(j))) * y(j);
+            y = yn;
+        end
     end
 end
