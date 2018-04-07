@@ -1,6 +1,7 @@
 function z = kkb_spline(t,x,f,y,k)
-    
-    for n = 1:length(x)
-        row,j = bspline_vector(t,x(n),k);
-    end
+    n = length(t) - 2*k - 1;
+    M = bspline_vector(t,x,n,k);
+    size(M)
+    c = M\f;
+    z = deboor(t,x,c,k);
 end
