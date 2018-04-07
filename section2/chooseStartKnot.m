@@ -6,21 +6,20 @@
 % t := vector to search
 % 
 % x := scalar value to search for
-function i = chooseStartKnot(x,t)
+%
+% k := order of the spline
+function i = chooseStartKnot(x,t,k)
     if(t(length(t)) < x)
         error("x is larger than all elements in t")
-    elseif(t(1) > x)
-        error("x is smaller than all elements in t")
+    elseif(t(k+1) > x)
+        error("x is too small to be drawn")
     else
-        for i = 1:length(t)
-            if(t(i) <= x)
-                if(i == length(t))
-                    break
-                elseif(t(i) < t(i+1) && t(i+1) > x)
-                    break
-                end
+        for i = k+1:length(t)
+            if(t(i) <= x && t(i+1) > x)
+                break
+            elseif(t(i) < x && t(i+1) >= x)
+                break
             end
-            
         end
     end
 end
