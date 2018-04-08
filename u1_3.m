@@ -1,3 +1,3 @@
-function u = u1_3(x, y)
-u = x^2 + y^2;
+function u = u1_3(X, Y)
+u = X.^2 + Y.^2;
 end

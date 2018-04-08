@@ -1,3 +1,3 @@
-function u = u2(x, y)
-u = exp(x+y);
+function U = u2(X, Y)
+U = exp(X + Y);
 end

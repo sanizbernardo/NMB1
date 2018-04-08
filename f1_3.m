@@ -1,3 +1,3 @@
-function f= f1_3(x, y)
-f = 4;
+function F= f1_3(X, Y)
+F = X.*0 + Y.*0 + 4;
 end

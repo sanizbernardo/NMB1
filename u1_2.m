@@ -1,3 +1,3 @@
-function u = u1_2(x, y)
-u = 1 + x + y;
+function U = u1_2(X, Y)
+U = 1 + X + Y;
 end

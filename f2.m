@@ -1,3 +1,3 @@
-function f= f2(x, y)
-f = exp(x+y);
+function F= f2(X, Y)
+F = exp(X + Y);
 end
