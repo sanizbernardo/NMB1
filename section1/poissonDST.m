@@ -8,5 +8,4 @@ Us = calcU(Fs, N);
 Ut = invTransform(Us);
 
 U = complete(Ut, u, N);
-
 end
