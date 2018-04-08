@@ -1,13 +1,12 @@
 %{
 Opgave 1
 %}
-%{
+
 P1 = poissonDST(@f1, @u1, 50);
 
 P2 = poissonDST(@f1_2, @u1_2, 50);
 
 P3 = poissonDST(@f1_2, @u1_2, 50);
-%}
 
 %{
 Opgave 2
