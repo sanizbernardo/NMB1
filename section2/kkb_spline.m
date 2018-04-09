@@ -6,8 +6,7 @@
 %   containing the values of the approximation evaluated in their
 %   respective x values.
 function z = kkb_spline(t,x,f,y,k)
-    n = length(t) - 2*k - 1;
-    M = bspline_vector(t,x,n,k);
+    M = evaluate_bspline(t,x,k);
     c = M\f;
     z = deboor(t,x,c,k);
 end
