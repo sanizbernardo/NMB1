@@ -1,8 +1,8 @@
 %Quadratic spline basis
 k = 2;
-n = 5;
 x = linspace(0,1);
 t = [-.2 -.1 0 .1 .3 .5 .8 1 1.1 1.2];
+n = length(t) - 2*k - 1;
 y = zeros(k+n, length(x));
 for i = 1:k+n
     c = zeros(k+n,1);
@@ -14,6 +14,7 @@ print('quadratic','-depsc','-tiff');
 %Cubic spline basis
 k = 3;
 t = [-.3 -.2 -.1 0 .1 .3 .5 .8 1 1.1 1.2 1.3];
+n = length(t) - 2*k - 1;
 y = zeros(k+n, length(x));
 for i = 1:k+n
     c = zeros(k+n,1);
