@@ -5,7 +5,7 @@ x = 1:N;
 y = 1:N;
 [X, Y] = meshgrid(x,y);
 
-F = f(X.*h,Y.*h)*h^2;
+F = f(X*h,Y*h)*h^2;
 U = u(X*h, Y*h);
 for i = 1:N
     F(i,1) = F(i,1) - U(i, 1);

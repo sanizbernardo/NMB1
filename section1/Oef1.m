@@ -22,14 +22,23 @@ toc
 
 h = 1/1025;
 
+x = 1:1024;
+y = 1:1024;
+[X, Y] = meshgrid(x,y);
+U = u2(X*h, Y*h);
+
 error = zeros(1026, 1026);
-for i = 0:1025
-    for j = 0:1025
-        error(i+1, j+1) = F(i+1, j+1) - u2(h*i, h*j);
+for i = 2:1023
+    for j = 2:1023
+        error(i, j) = F(i, j) - U(i+1, j+1);
     end
 end
+error = abs(error);
 
-imagesc(error);
+%surf(error);
+contour(error, 20);
+colorbar;
 colormap(winter);
+%shading interp;
 
 disp('finished');
