@@ -3,9 +3,9 @@ F = fMatrix(f, u, N);
 
 Fs = sineTransform(F);
 
-Us = calcU(Fs, N);
+Us = calcU(Fs);
 
 Ut = invTransform(Us);
 
-U = complete(Ut, u, N);
+U = complete(Ut, u);
 end

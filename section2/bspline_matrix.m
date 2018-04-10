@@ -12,7 +12,7 @@ function y = bspline_matrix(x,t,j,k)
                 y(m,n) = 1;
             else
                 %index relative to row of knots
-                i = j - (m - (k+1))
+                i = j - (m - (k+1));
                 %onderste deel van de matrix
                 if(m == k+1)
                     y(m,n) = ((x - t(i))/(t(i+n-1) - t(i))) * y(m,n-1);

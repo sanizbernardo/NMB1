@@ -12,27 +12,38 @@ P3 = poissonDST(@f1_2, @u1_2, 50);
 Opgave 2
 %}
 
+results = zeros(8,2);
 for i = 3:10
-    poissonDST(@f2, @u2, 2^i);
-end
+    F = poissonDST(@f2, @u2, 2^i);
+    
+    x = 0:2^i + 1;
+    y = 0:2^i + 1;
+    [X, Y] = meshgrid(x,y);
+    U = u2(X*h, Y*h);
 
+    error = F-U;
+    error = abs(error);
+    results(i-2,1) = 2^i;
+    results(i-2,2) = max(error(:));
+end
+disp(results);
+T = array2table(results,'VariableNames',{'N','error'});
+disp(T);
+
+
+N = 512;
 tic
-F = poissonDST(@f2, @u2, 1024);
+F = poissonDST(@f2, @u2, N);
 toc
 
-h = 1/1025;
+h = 1/(N+1);
 
-x = 1:1024;
-y = 1:1024;
+x = 0:N+1;
+y = 0:N+1;
 [X, Y] = meshgrid(x,y);
 U = u2(X*h, Y*h);
 
-error = zeros(1026, 1026);
-for i = 2:1023
-    for j = 2:1023
-        error(i, j) = F(i, j) - U(i+1, j+1);
-    end
-end
+error = F-U;
 error = abs(error);
 
 %surf(error);

@@ -2,12 +2,10 @@
 Opgave 3
 %}
 
-F = poissonDST(@f1_3, @u1_3, 12);
+F = poissonDST(@f3, @u3, 1024);
 
-disp(F);
-
-contour(F, 30);
+contour(F, 20);
 %surf(F);
-colormap(winter);
+colormap(summer);
 colorbar;
 shading interp;
