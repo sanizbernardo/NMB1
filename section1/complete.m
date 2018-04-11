@@ -1,5 +1,5 @@
 function U = complete(Ut, u)
-N = size(M,1);
+N = size(Ut,1);
 h = 1/(N+1);
 
 x = 0:N+1;

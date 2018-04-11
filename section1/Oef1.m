@@ -15,13 +15,13 @@ Opgave 2
 results = zeros(8,2);
 for i = 3:10
     n = 2^i;
-    F = poissonDST(@f1_2, @u1_2, n);
+    F = poissonDST(@f2, @u2, n);
     h = 1/(n+1);
     
     x = 0:n+1;
     y = 0:n+1;
     [X, Y] = meshgrid(x,y);
-    U = u1_2(X*h, Y*h);
+    U = u2(X*h, Y*h);
 
     error = F-U;
     error = abs(error);
@@ -35,7 +35,7 @@ disp(T);
 
 N = 1024;
 tic
-F = poissonDST(@f1_2, @u1_2, N);
+F = poissonDST(@f2, @u2, N);
 toc
 
 h = 1/(N+1);
@@ -43,7 +43,7 @@ h = 1/(N+1);
 x = 0:N+1;
 y = 0:N+1;
 [X, Y] = meshgrid(x,y);
-U = u1_2(X*h, Y*h);
+U = u2(X*h, Y*h);
 
 error = F-U;
 error = abs(error);
