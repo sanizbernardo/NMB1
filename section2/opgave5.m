@@ -3,23 +3,29 @@ k = 2;
 x = linspace(0,1);
 t = [-.2 -.1 0 .1 .3 .5 .8 1 1.1 1.2];
 n = length(t) - 2*k - 1;
-y = zeros(k+n, length(x));
+y1 = zeros(k+n, length(x));
 for i = 1:k+n
     c = zeros(k+n,1);
     c(i) = 1;
-    y(i,1:length(x)) = deboor(t,x,c,k);
+    y1(i,1:length(x)) = deboor(t,x,c,k);
 end
-plot(x,y);
-print('quadratic','-depsc','-tiff');
 %Cubic spline basis
 k = 3;
 t = [-.3 -.2 -.1 0 .1 .3 .5 .8 1 1.1 1.2 1.3];
 n = length(t) - 2*k - 1;
-y = zeros(k+n, length(x));
+y2 = zeros(k+n, length(x));
 for i = 1:k+n
     c = zeros(k+n,1);
     c(i) = 1;
-    y(i,1:length(x)) = deboor(t,x,c,k);
+    y2(i,1:length(x)) = deboor(t,x,c,k);
 end
-plot(x,y);
-print('cubic','-depsc','-tiff');
+%plot beide
+ha = tight_subplot(1,2,.02,.05,[.05 .01]);
+axes(ha(1));
+plot(x,y1);
+title('Kwadratisch');
+axes(ha(2))
+plot(x,y2);
+set(gca,'YTickLabelMode','manual','YTickLabels',[]);
+box on
+title('Kubisch');
