@@ -5,7 +5,7 @@
 %   that same length, containing the values of the spline function
 %   evaluated in their respective x value
 %
-% see also CHOOSESTARTKNOT,KKB_SPLINE,BSPLINE_VECTOR
+% see also CHOOSESTARTKNOT,KKB_SPLINE,EVALUATE_BSPLINE
 function y = deboor(t,x,c,k)
     y = zeros(length(x),1);
     for i = 1:length(x)
