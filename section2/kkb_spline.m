@@ -7,6 +7,9 @@
 %   respective x values.
 function z = kkb_spline(t,x,f,y,k)
     M = evaluate_bspline(t,x,k);
+    if(isrow(f))
+        f = f.';
+    end
     c = M\f;
-    z = deboor(t,x,c,k);
+    z = deboor(t,y,c,k);
 end
