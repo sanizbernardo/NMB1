@@ -1,14 +1,4 @@
 %{
-Opgave 1
-%}
-
-P1 = poissonDST(@f1, @u1, 50);
-
-P2 = poissonDST(@f1_2, @u1_2, 50);
-
-P3 = poissonDST(@f1_3, @u1_3, 50);
-
-%{
 Opgave 2
 %}
 
@@ -29,9 +19,8 @@ for i = 3:10
     results(i-2,2) = max(error(:));
 end
 
-T = array2table(results,'VariableNames',{'N','error'});
+T = array2table(results,'VariableNames',{'N';'error'});
 disp(T);
-
 
 N = 1024;
 tic
@@ -49,9 +38,9 @@ error = F-U;
 error = abs(error);
 
 %surf(error);
-contour(error, 20);
+contour(error, 11);
 colorbar;
-colormap(winter);
+colormap(jet);
 shading interp;
 
 disp('finished');
